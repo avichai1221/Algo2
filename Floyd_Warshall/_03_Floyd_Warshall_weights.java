@@ -1,45 +1,59 @@
 package Floyd_Warshall;
 // Created by Or Kadrawi
+//Editing and comments Avichai Israeli
 
 public class _03_Floyd_Warshall_weights {
 
-	static int inf = 1000000;
+	static int inf = 999;
 
 	public static void main(String[] args) {
 
 		//Q1 basic floyd warshall to find minimum price
-		int[][] mat = {{0, 1, inf, 5},
-				{1, 0, 10, inf},
-				{inf, 10, 0, 3},
-				{5, inf, 3, 0}};
-		floyd_warshall(mat);
-		Print(mat);
+		//מטריצת שכנויות עם משקלים במקום T,F 
+		// F עבור  inf נשים 
+		int[][] mat = {{0, 4, inf, 3},
+				       {4, 0, 15, inf},
+			        	{inf, 15, 0, 1},
+			        	{3, inf, 1, 0}};
+		
+		int[][] matH = {{0, 1, inf, inf,1},
+			            {1, 0, 1, inf, inf},
+			            {inf, 1, 0, 1, inf},
+		        	    {inf, inf,1, 0, 1},
+		        	    {1, inf, inf, 1, 0}};
+		//Print(mat);
+	//	floyd_warshall(mat);
+		//Print(mat);
 
 		//Q2 floyd warshall to find minimum price with example of path
 		int[][] mat2 = {{0, 1, inf, 5},
-				{1, 0, 10, inf},
-				{inf, 10, 0, 3},
-				{5, inf, 3, 0}};
-		String[][] path = InitPath(mat.length, mat2);
-		floyd_warshall(mat2, path);
-		FixPath(path);
-		Print(mat2);	
-		System.out.println();
-		PrintAllPath(path);	
+				        {1, 0, 10, inf},
+				        {inf, 10, 0, 3},
+			        	{5, inf, 3, 0}};
+	//	String[][] path = InitPath(mat.length, mat);
+	//	PrintAllPath(path);	
+	//	floyd_warshall(mat, path);
+	//	FixPath(path);
+	//	Print(mat);	
+	//	System.out.println();
+	//	PrintAllPath(path);	
 		
 		//Q3 floyd warshall on weights on the vertices 
-		int[][] mat3 = {{0,1,1,inf},
-				{1,0,inf,1},
-				{1,inf,0,1},
-				{inf,1,1,0}};
-		int[] arr = {1,8,5,10};
+		int[][] mat3 = {{0,1,inf,1},
+				        {1,0,1,inf},
+			         	{inf,1,0,1},
+			         	{1,inf,1,0}};
+		int[] arr = {4,3,2,5}; //מערך של המשקלים של הקודקודים
 		int[][] H = InitH(mat3, arr);
+		Print(H);
 		floyd_warshall(H);
+			
 		fixH(H, arr);
 		Print(H);	
 	}
 
 	//Q1
+	// מציאת הדרך הזולה ביותר להגיע מכל קודקוד לכל קודקוד
 	private static void floyd_warshall(int[][] mat) {
 		int size = mat.length;
 		for (int k = 0; k < size; k++) {
@@ -52,6 +66,8 @@ public class _03_Floyd_Warshall_weights {
 			}
 		}
 	}
+	
+	// הדפסת המטריצה
 	private static void Print(int[][] mat)
 	{
 		for (int i = 0; i < mat.length; i++) {
@@ -64,6 +80,7 @@ public class _03_Floyd_Warshall_weights {
 	}
 
 	//Q2
+	//יצירת מטריצת הסטרינגים של הנתיבים
 	private static String[][] InitPath(int size, int[][] mat) {
 		String[][] path = new String[size][size];
 		for (int i = 0; i < path.length; i++) {
@@ -89,6 +106,7 @@ public class _03_Floyd_Warshall_weights {
 			}
 		}
 	}
+	// מוסיף את השרשור של קודקוד היעד
 	private static void FixPath(String[][] path) {
 		for (int i = 0; i < path.length; i++) {
 			for (int j = 0; j < path.length; j++) {
@@ -96,6 +114,8 @@ public class _03_Floyd_Warshall_weights {
 			}
 		}
 	}
+	
+	// הדפסה של הנתיבים מטריצת הנתיבים
 	private static void PrintAllPath(String[][] path) {
 		for (int i = 0; i < path.length; i++) {
 			for (int j = 0; j < path.length; j++) {
@@ -110,6 +130,7 @@ public class _03_Floyd_Warshall_weights {
 	}
 	
 	//Q3
+	//המרת המטריצה ממשקלים על קודקודים למשקלים על צלעות
 	private static int[][] InitH(int[][] mat, int[] arr) {
 		int size = mat.length;
 		int[][] H = new int[size][size];
@@ -130,6 +151,8 @@ public class _03_Floyd_Warshall_weights {
 		}
 		return H;
 	}
+	
+	//תיקון של פלויד וורשל כי הכל נספר פעמים חוץ מהקצוות
 	private static void fixH(int[][] H, int[] arr) {
 		for (int i = 0; i < H.length; i++) {
 			for (int j = 0; j < H[i].length; j++) {
