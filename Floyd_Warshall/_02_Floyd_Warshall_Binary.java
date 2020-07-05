@@ -1,7 +1,7 @@
 package Floyd_Warshall;
 
 // Created by Or Kadrawi
-//Editing and comments
+//Editing and comments Avichai Israeli
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -70,8 +70,8 @@ public class _02_Floyd_Warshall_Binary {
 		IsExist(0,0,0,4,T,path,n);
 
 		System.out.println("\nAll paths:\n");
-		//PrintAllPath(T, path, n);		
-		//FixPath(path, n);
+	PrintAllPath(T, path, n);		
+		FixPath(path, n);
 		//System.out.println("Bottle1 = " + m + ", Bottle2 = " + n);
 
 		//IsExist(0,0,0,4,T,path,n);
@@ -147,7 +147,7 @@ public class _02_Floyd_Warshall_Binary {
 		}
 		return true;
 	}
-	//מטריצת מסלולים
+	// FW מטריצת מסלולים
 	private static void floyd_warshall(boolean[][] T) {
 		int size = T.length;
 		for (int k = 0; k < size; k++) {
@@ -213,7 +213,7 @@ public class _02_Floyd_Warshall_Binary {
 		}
 		return true;
 	}
-	
+	/*
 	private static void ReArrangeMat(boolean[][] T) {
 		ReArrangeCols(T);
 		Transpose(T);
@@ -263,9 +263,9 @@ public class _02_Floyd_Warshall_Binary {
 		T[i][start] = T[i][end];
 		T[i][end] = temp;
 	}
-
+*/
 	
-/*
+
 	// כמה רכיבי קשירות יש ?
 	private static int NumberOfComponents(boolean[][] T) {
 		int size = T.length;
@@ -333,7 +333,7 @@ public class _02_Floyd_Warshall_Binary {
 
 
 
-*/
+
 	//        V4
 	//        /\
 	//       /  \
@@ -351,7 +351,7 @@ public class _02_Floyd_Warshall_Binary {
 		String[][] path = new String[size][size];
 		for (int i = 0; i < path.length; i++) {
 			for (int j = 0; j < path.length; j++) {
-				if (T[i][j] == true) path[i][j]=Integer.toString(i);
+				if (T[i][j] == true) path[i][j]=Integer.toString(i);//מה שיש בו "נכון" במטריצת שכנויות נשים את קודקוד המקור
 				//path[i][j] = "("+_01_Bottles_Problem.getI(i, n)+","+_01_Bottles_Problem.getJ(i, n)+")";
 
 			}

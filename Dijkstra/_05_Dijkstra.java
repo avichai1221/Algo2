@@ -48,8 +48,10 @@ public class _05_Dijkstra {
 			if (v == t)
 				break;
 		}
-		
 		System.out.println("dist = " + dist[t]);
+		
+		//הדפסת המסלולים
+
 		int k = t;
 		String path = "";
 		while (prev[k] != -1)

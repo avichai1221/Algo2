@@ -21,16 +21,21 @@ public class _01_Bottles_Problem { //סיבוכיות O(M*N)^2 מילוי המטריצה
 				k = getIndex(i,j,n);
 				//  T כל ששת המצבים האפשריים של הבקבוקים נסמן ב 
 				mat[k][getIndex(0,j,n)] = true;	//ריקון הראשון
-
+System.out.println(mat[k][getIndex(0,j,n)]);
 				mat[k][getIndex(i,0,n)] = true;	//ריקון השני
+				System.out.println(k);
 
 				mat[k][getIndex(m,j,n)] = true;	//מילוי הראשון
+				System.out.println(mat[k][getIndex(m,j,n)]);
 
 				mat[k][getIndex(i,n,n)] = true;	//מילוי השני
+				System.out.println(mat[k][getIndex(0,n,n)]);
 
 				mat[k][getIndex(i+j-(Math.min(i+j, n)),Math.min(i+j, n),n)] = true;	//לשפוך מהראשון לשני	
+				System.out.println(mat[k][getIndex(i+j-(Math.min(i+j, n)),Math.min(i+j, n),n)]);
 
 				mat[k][getIndex(Math.min(i+j, m),i+j-Math.min(i+j, m),n)] = true; //לשפוך מהשני לראשון	
+				System.out.println(mat[k][getIndex(Math.min(i+j, m),i+j-Math.min(i+j, m),n)]);
 
 			}
 		}

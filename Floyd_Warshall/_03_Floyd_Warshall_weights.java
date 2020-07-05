@@ -54,7 +54,7 @@ public class _03_Floyd_Warshall_weights {
 
 	//Q1
 	// מציאת הדרך הזולה ביותר להגיע מכל קודקוד לכל קודקוד
-	private static void floyd_warshall(int[][] mat) {
+	public static void floyd_warshall(int[][] mat) {
 		int size = mat.length;
 		for (int k = 0; k < size; k++) {
 			for (int i = 0; i < size; i++) {
@@ -68,7 +68,7 @@ public class _03_Floyd_Warshall_weights {
 	}
 	
 	// הדפסת המטריצה
-	private static void Print(int[][] mat)
+	public static void Print(int[][] mat)
 	{
 		for (int i = 0; i < mat.length; i++) {
 			for (int j = 0; j < mat[i].length; j++) {
@@ -81,7 +81,7 @@ public class _03_Floyd_Warshall_weights {
 
 	//Q2
 	//יצירת מטריצת הסטרינגים של הנתיבים
-	private static String[][] InitPath(int size, int[][] mat) {
+	public static String[][] InitPath(int size, int[][] mat) {
 		String[][] path = new String[size][size];
 		for (int i = 0; i < path.length; i++) {
 			for (int j = 0; j < path.length; j++) {
@@ -91,7 +91,8 @@ public class _03_Floyd_Warshall_weights {
 		}
 		return path;
 	}
-	private static void floyd_warshall(int[][] mat, String[][] path) {
+	//מציאת המסלול ממש
+	public static void floyd_warshall(int[][] mat, String[][] path) {
 		int size = mat.length;
 		for (int k = 0; k < size; k++) {
 			for (int i = 0; i < size; i++) {
@@ -107,7 +108,7 @@ public class _03_Floyd_Warshall_weights {
 		}
 	}
 	// מוסיף את השרשור של קודקוד היעד
-	private static void FixPath(String[][] path) {
+	public static void FixPath(String[][] path) {
 		for (int i = 0; i < path.length; i++) {
 			for (int j = 0; j < path.length; j++) {
 				path[i][j] += "->"+(j+1);
@@ -116,7 +117,7 @@ public class _03_Floyd_Warshall_weights {
 	}
 	
 	// הדפסה של הנתיבים מטריצת הנתיבים
-	private static void PrintAllPath(String[][] path) {
+	public static void PrintAllPath(String[][] path) {
 		for (int i = 0; i < path.length; i++) {
 			for (int j = 0; j < path.length; j++) {
 				System.out.print((i+1)+"->"+(j+1)+":\t");
@@ -131,7 +132,7 @@ public class _03_Floyd_Warshall_weights {
 	
 	//Q3
 	//המרת המטריצה ממשקלים על קודקודים למשקלים על צלעות
-	private static int[][] InitH(int[][] mat, int[] arr) {
+	public static int[][] InitH(int[][] mat, int[] arr) {
 		int size = mat.length;
 		int[][] H = new int[size][size];
 
@@ -146,14 +147,14 @@ public class _03_Floyd_Warshall_weights {
 				}
 			}
 		}
-		for (int i = 0; i < H.length; i++) {
+		for (int i = 0; i < H.length; i++) { //הזנת האלכסון
 			H[i][i] = arr[i];
 		}
 		return H;
 	}
 	
 	//תיקון של פלויד וורשל כי הכל נספר פעמים חוץ מהקצוות
-	private static void fixH(int[][] H, int[] arr) {
+	public static void fixH(int[][] H, int[] arr) {
 		for (int i = 0; i < H.length; i++) {
 			for (int j = 0; j < H[i].length; j++) {
 				if (i != j)

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class _05_BiDijkstra {
 
 	static int inf = 1000000;
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 		int[][] mat = {{0 ,1 ,2 ,inf ,inf ,inf ,inf ,inf },
 				{1 ,0 ,4 ,inf ,5 ,inf ,inf ,inf },
 				{2 ,4 ,0 ,7 ,inf ,3 ,inf ,inf },
